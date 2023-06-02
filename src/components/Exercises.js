@@ -5,10 +5,11 @@ import fetchData from "../utilis/fetchData";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant, slideIn } from "../utils/motion";
 import ExerciseCard from "./ExerciseCard";
+import Loader from "./Loader";
 
 const Exercises = ({ setExercises, bodyPart, exercises }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisesPerPage = 15;
+  const exercisesPerPage = 10;
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
   const currentExercises = exercises.slice(
@@ -42,6 +43,8 @@ const Exercises = ({ setExercises, bodyPart, exercises }) => {
 
     fetchExercisesData();
   }, [bodyPart]);
+
+  if (!currentExercises.length) return <Loader />;
 
   return (
     <Box id="exercises" sx={{ mt: { lg: "110px" } }} mt="50px" p="20px">

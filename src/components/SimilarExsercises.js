@@ -8,8 +8,11 @@ import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import RightArrowIcon from "../assets/icons/right-arrow.png";
 import LeftArrowIcon from "../assets/icons/left-arrow.png";
 import Horizontal from "./Horizontal";
+import Loader from "./Loader";
 
 const SimilarExsercises = ({ sameEquipment, sameTarget }) => {
+  if (!sameEquipment.length || !sameTarget.length) return <Loader />;
+
   return (
     <Stack id="exercises">
       <Box sx={{ marginTop: { lg: "200px", xs: "20px" }, p: "20px" }}>

@@ -12,7 +12,7 @@ const HeroBanner = () => {
   const [yPosCall, setYPosCall] = useState(0);
 
   scrollYProgress.onChange((x) => {
-    setYPos(-1 * x * 15000);
+    setYPos(-1 * x * 5000);
     setYPosCall(x * 1500);
 
     console.log(yPos);
